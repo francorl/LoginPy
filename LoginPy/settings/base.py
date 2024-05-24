@@ -1,7 +1,10 @@
+
+
+from unipath import Path
 from django.core.exceptions import ImproperlyConfigured
 import json
 
-from unipath import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).ancestor(3)
@@ -28,14 +31,16 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
 )
 
+THIRD_PARTY_APPS = (
+    # Add any third-party apps here
+)
 
-LOCAL_APPS = ()
+LOCAL_APPS = (
+    'applications.users',
+)
 
 
-THIRD_PARTY_APPS = ()
-
-
-INSTALLED_APPS = THIRD_PARTY_APPS + DJANGO_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -91,6 +96,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = 'users.User'
 
 
 # Internationalization
